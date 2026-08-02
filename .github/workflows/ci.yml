@@ -40,3 +40,33 @@ jobs:
 
       - name: Build production application
         run: npm run build
+
+  database:
+    name: Database migration and tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up Supabase CLI
+        uses: supabase/setup-cli@v3
+
+      - name: Start local database
+        run: supabase db start
+
+      - name: Lint database
+        run: supabase db lint --local --level error
+
+      - name: Run database tests
+        run: supabase test db --local
