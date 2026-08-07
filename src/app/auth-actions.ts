@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { siteUrl } from "@/lib/supabase/config";
+import { clearActiveOrganizationCookie } from "@/lib/organizations";
 import { createClient } from "@/lib/supabase/server";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -166,6 +167,7 @@ export async function signOut() {
   const supabase = await createClient();
 
   await supabase.auth.signOut();
+  await clearActiveOrganizationCookie();
 
   redirectToForm("/login", {
     message: "You have signed out.",
