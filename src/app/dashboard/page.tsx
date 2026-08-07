@@ -135,12 +135,20 @@ export default async function DashboardPage({
               Your private campaign workspace is ready.
             </p>
 
-            <Link
-              href="/clients"
-              className="mt-6 inline-flex rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-semibold hover:bg-violet-500"
-            >
-              Manage clients
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/clients"
+                className="inline-flex rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-semibold hover:bg-violet-500"
+              >
+                Manage clients
+              </Link>
+              <Link
+                href="/campaigns"
+                className="inline-flex rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-semibold hover:bg-slate-800"
+              >
+                Manage campaigns
+              </Link>
+            </div>
           </div>
         </section>
       </div>
