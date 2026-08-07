@@ -59,7 +59,9 @@ export async function updateSession(
   const isProtectedRoute =
     pathname === "/dashboard" ||
     pathname.startsWith("/dashboard/") ||
-    pathname === "/onboarding";
+    pathname === "/onboarding" ||
+    pathname === "/clients" ||
+    pathname.startsWith("/clients/");
 
   const isAuthenticationRoute =
     pathname === "/login" ||
