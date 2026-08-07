@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { signOut } from "@/app/auth-actions";
@@ -133,6 +134,13 @@ export default async function DashboardPage({
             <p className="mt-3 text-slate-400">
               Your private campaign workspace is ready.
             </p>
+
+            <Link
+              href="/clients"
+              className="mt-6 inline-flex rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-semibold hover:bg-violet-500"
+            >
+              Manage clients
+            </Link>
           </div>
         </section>
       </div>
