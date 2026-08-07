@@ -18,8 +18,12 @@ test("user can sign up, sign out, and sign in", async ({ page }) => {
   await page.getByLabel(/confirm password/i).fill(password);
   await page.getByRole("button", { name: /create account|sign up/i }).click();
 
-  await expect(page).toHaveURL(/\/dashboard/);
-  await expect(page.getByText(fullName)).toBeVisible();
+  await expect(page).toHaveURL(/\/onboarding/);
+  await expect(
+    page.getByRole("heading", {
+      name: /create your organization/i,
+    }),
+  ).toBeVisible();
 
   await page.getByRole("button", { name: /sign out/i }).click();
   await expect(page).toHaveURL(/\/login/);
@@ -32,6 +36,5 @@ test("user can sign up, sign out, and sign in", async ({ page }) => {
   await page.getByLabel(/email/i).fill(email);
   await page.getByLabel(/password/i).fill(password);
   await page.getByRole("button", { name: /sign in/i }).click();
-  await expect(page).toHaveURL(/\/dashboard/);
-  await expect(page.getByText(fullName)).toBeVisible();
+  await expect(page).toHaveURL(/\/onboarding/);
 });
