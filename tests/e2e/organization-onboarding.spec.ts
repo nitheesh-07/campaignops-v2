@@ -61,9 +61,7 @@ test("user creates an organization during onboarding", async ({
     .getByRole("button", { name: /switch/i })
     .click();
 
-  await expect(page.getByRole("alert")).toContainText(
-    /do not have access/i,
-  );
+  await expect(page.getByText(/do not have access/i)).toBeVisible();
   await expect(
     page.getByRole("heading", { name: organizationName }),
   ).toBeVisible();

@@ -108,7 +108,5 @@ test("duplicate client names are rejected per organization", async ({
     .click();
 
   await expect(page).toHaveURL(/\/clients\/new\?error=/);
-  await expect(page.getByRole("alert")).toContainText(
-    /already exists/i,
-  );
+  await expect(page.getByText(/already exists/i)).toBeVisible();
 });

@@ -61,7 +61,9 @@ export async function updateSession(
     pathname.startsWith("/dashboard/") ||
     pathname === "/onboarding" ||
     pathname === "/clients" ||
-    pathname.startsWith("/clients/");
+    pathname.startsWith("/clients/") ||
+    pathname === "/campaigns" ||
+    pathname.startsWith("/campaigns/");
 
   const isAuthenticationRoute =
     pathname === "/login" ||
